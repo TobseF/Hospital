@@ -1,6 +1,6 @@
  # 🚑 Hospital - The Game
  
- ![Screenshot](https://tobsef.github.io/hospital/screenshots/hospital.gif)
+ ![Screenshot](https://github.com/TobseF/hospital/blob/screenshots/screenshot.gif)
  
  Help! The hospital is burning, try to save lives and catch jumping patients.  
  Move your team with the mesh, before patients hit the ground. Good Luck!
