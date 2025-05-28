@@ -34,4 +34,4 @@
  ### 💻 System Requirements
  To start, the game needs an installed [Java JRE](https://www.java.com/en/download).
  The game was developed in Java 1.4 and should even run with 1.1.
- To launch it in an IDE run `hospital.game.main`
+ To launch it in an IDE run `hospital.Game.main`

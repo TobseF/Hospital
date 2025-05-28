@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <exec.mainClass>hospital.game</exec.mainClass>
+        <exec.mainClass>hospital.Game</exec.mainClass>
     </properties>
 
 </project>
