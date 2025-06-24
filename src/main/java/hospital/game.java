@@ -34,7 +34,7 @@ public class game extends methods implements Runnable {
         game Fun = new game();
         Fun.setLocation(150, 150);
         Fun.setResizable(false);
-        Fun.setSize(625, 442);
+        Fun.setSize(625, 446);
         Fun.setVisible(true);
         Fun.setTitle("Hospital 2");
         Sheet.requestFocus(); // Focus Canvas when starting
@@ -49,7 +49,7 @@ public class game extends methods implements Runnable {
             while (playing == true) {
                 while (y >= 5) {
                     if (pause == false) {
-                        draw_shape(x - 5, ycanvas - 1, 14, 28, 0, 0, 0, 0);//Person is deleted
+                        draw_shape(x - 7, ycanvas - 3, 16, 31, 0, 0, 0, 3);//Person is deleted
                         draw_shape(102, 360, 575, 30, 0, 0, 0, 0);//delete pixel errors above the people
                         double ydouble = (((a0) + ((a1) * x)) + ((a2) * Math.pow(x, 2)) + ((a3) * Math.pow(x, 3)) + ((a4) * Math.pow(x, 4))); //Polynomial function of 4th degree, Demo at: http://www.vs-c.de/vsengine/vlu/vsc/de/ma/1/mc/ma_04/ma_04_02/ma_04_02_01.vlu/Page/vsc/de/ma/1/mc/ma_04/ma_04_02/ma_04_02_09.vscml.html
                         System.out.println("x " + x);
