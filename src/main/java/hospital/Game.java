@@ -60,12 +60,7 @@ public class Game extends Methods implements Runnable {
                         draw_person(x, ycanvas);
                         draw_paddle(position);
                         x = x + 1; // increase x-value by 1
-                        try {
-                            Thread.sleep(speed);
-                        } catch (InterruptedException e) {
-                            print("IE");
-                            t.interrupt();
-                        }
+                        sleep(speed);
                         print("position" + position);
                         if ((y <= 20) && (y <= 18) && ((x >= (position)) && (x <= (position + paddle_length))) || (x >= stop) || (x <= xstart)) { //Bounce condition
                             points = points + 1;
@@ -98,7 +93,10 @@ public class Game extends Methods implements Runnable {
                         }
 
                         //________________
-                    }// Pause
+                    }else {
+                        // Pause
+                        sleep(500);
+                    }
                 }// while y>=5
                 if (lives <= 550) {
                     draw_shape(x - 4, 400, 16, 9, 255, 45, 52, 3);//Blood stain
@@ -125,11 +123,7 @@ public class Game extends Methods implements Runnable {
                 // draw_text("End Game               Esc",0,220,360,255,255,255,1,12);
                 // draw_text("Game Over",0,175,200,255,0,0,1,50);
             }
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                print("IE");
-            }
+            sleep(1000);
             //t.interrupt();
             //t=null;
         }// game

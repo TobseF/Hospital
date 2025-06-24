@@ -10,7 +10,7 @@ import java.awt.event.KeyListener;
 class Methods extends Frame implements KeyListener {
 
     // Debug
-    static boolean logging = true;
+    static boolean logging = false;
     
     // Variable Values______________________________________
     int position = 300; // Position of the Paddle
@@ -447,6 +447,14 @@ class Methods extends Frame implements KeyListener {
                 clear_paddle();
                 draw_paddle(position);
             }
+        }
+    }
+
+    public static void sleep(long millis){
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            print("IE");
         }
     }
 
