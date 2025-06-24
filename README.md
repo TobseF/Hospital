@@ -1,6 +1,8 @@
  # 🚑 Hospital - The Game
 
- ![Screenshot](https://github.com/TobseF/hospital/blob/screenshots/screenshot.gif)
+ [![Screenshot](https://github.com/TobseF/hospital/blob/screenshots/screenshot.gif)](https://hospital.xswing.net/)
+
+### [🎮 Instant Play - Web](https://hospital.xswing.net/)
 
  Help!
  The hospital is burning. Try to save lives and catch jumping patients.  
