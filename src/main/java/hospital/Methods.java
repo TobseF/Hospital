@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-class methods extends Frame implements KeyListener {
+class Methods extends Frame implements KeyListener {
 
     // Variable Values______________________________________
     int position = 300; // Position of the Paddle
@@ -68,7 +68,7 @@ class methods extends Frame implements KeyListener {
     static Canvas Sheet;
     //_______________________
 
-    public methods() {
+    public Methods() {
         Sheet = new Canvas();
         Sheet.setBounds(0, 0, 600, 400);
         Sheet.setBackground(Color.black);

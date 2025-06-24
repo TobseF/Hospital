@@ -6,10 +6,10 @@ package hospital;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class game extends methods implements Runnable {
+public class Game extends Methods implements Runnable {
     static Thread t;
 
-    game() {
+    Game() {
         t = new Thread(this);
         initComponents();
     }
@@ -31,7 +31,7 @@ public class game extends methods implements Runnable {
     //	_____________________________________________________________
 
     public static void main(String[] args) {
-        game Fun = new game();
+        Game Fun = new Game();
         Fun.setLocation(150, 150);
         Fun.setResizable(false);
         Fun.setSize(625, 446);
