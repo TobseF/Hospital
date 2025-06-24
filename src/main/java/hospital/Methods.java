@@ -9,6 +9,9 @@ import java.awt.event.KeyListener;
 
 class Methods extends Frame implements KeyListener {
 
+    // Debug
+    static boolean logging = true;
+    
     // Variable Values______________________________________
     int position = 300; // Position of the Paddle
     int y = 250;
@@ -143,9 +146,9 @@ class Methods extends Frame implements KeyListener {
 
     public void path01() { //	Linear flight: a0:initial height; a1:angle(-0.5 to -1.1)
         a0 = 380 - ((int) (Math.random() * 220)); // Random value between 160 and 380
-        System.out.println("a0 " + a0);
+        print("a0 " + a0);
         a1 = -(1.1 - (int) (Math.random() * 0.6)); // Random value between -0.5 and -1.1
-        System.out.println("a1 " + a1);
+        print("a1 " + a1);
         a2 = 0;
         a3 = 0;
         a4 = 0;
@@ -265,12 +268,12 @@ class Methods extends Frame implements KeyListener {
         int yf = 20;
         x_person = x_person + 1;
         if (x_person >= 80) {
-            System.out.println("x_person>=80");
+            print("x_person>=80");
             y_person = y_person + 40;
             x_person = 0;
         }
         if (y_person >= 320) {
-            System.out.println("y_person>=400");
+            print("y_person>=400");
             x_person = 5;
             y_person = 20;
         }
@@ -313,7 +316,7 @@ class Methods extends Frame implements KeyListener {
         draw_person(585, 10);
         draw_text("L:", 0, 506, 28, 255, 255, 255, 1, 12);
         draw_text("P:", 0, 506, 53, 255, 255, 255, 1, 12);
-        System.out.println("Points " + points);
+        print("Points " + points);
     }
 
     static public void draw_help() { //Help menu
@@ -337,13 +340,13 @@ class Methods extends Frame implements KeyListener {
 
     public void gameOver() { //Game Over Text
         draw_text("Game Over", 0, 175, 200, 255, 0, 0, 1, 50);
-        System.out.println("Game Over" + gameover_blink);
+        print("Game Over" + gameover_blink);
         if (gameover_blink == 0) {
-            System.out.println("0");
+            print("0");
             draw_text("Restart Game          N", 0, 220, 350, 255, 0, 0, 1, 12);
             gameover_blink = gameover_blink + 1;
         } else {
-            System.out.println("1");
+            print("1");
             draw_text("Restart Game          N", 0, 220, 350, 255, 255, 255, 1, 12);
             gameover_blink = gameover_blink - 1;
         }
@@ -361,12 +364,12 @@ class Methods extends Frame implements KeyListener {
             paddle_length = 60;
         }
         if (v.getKeyCode() == KeyEvent.VK_S) {
-            System.out.println("Button Start pressed");
+            print("Button Start pressed");
             help = false;
             draw_help();
             pause = false;
             playing = true; // test
-            System.out.println(pause);
+            print(pause);
         }
         if (v.getKeyCode() == KeyEvent.VK_P) {
             if (pause == true) {
@@ -444,6 +447,20 @@ class Methods extends Frame implements KeyListener {
                 clear_paddle();
                 draw_paddle(position);
             }
+        }
+    }
+
+    public static void print(int number){
+        print(String.valueOf(number));
+    }
+
+    public static void print(boolean bool){
+        print(String.valueOf(bool));
+    }
+
+    public static void print(String message){
+        if(logging){
+            System.out.println(message);
         }
     }
 
