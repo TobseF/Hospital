@@ -2,8 +2,10 @@
 
  ![Screenshot](https://github.com/TobseF/hospital/blob/screenshots/screenshot.gif)
 
- Help! The hospital is burning, try to save lives and catch jumping patients.  
- Move your team with the mesh, before patients hit the ground. Good Luck!
+ Help!
+ The hospital is burning. Try to save lives and catch jumping patients.  
+ Move your team with the mesh before patients hit the ground.
+ Good Luck!
 
  ### 🌟 Features
  * Realistic smoke rendering
@@ -35,3 +37,10 @@
  To start, the game needs an installed [Java JRE](https://www.java.com/en/download).
  The game was developed in Java 1.4 and should even run with 1.1.
  To launch it in an IDE run `hospital.Game.main`
+
+### 🔨 Build
+To build the project, run the Maven task:
+```
+mvn package
+```
+This will build a runnable jar in `target/hospital-1.0-SNAPSHOT.jar`.
