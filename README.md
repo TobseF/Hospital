@@ -43,3 +43,23 @@
 ### 🔨 Build
 To build the project, run the Maven task:
 ```
+mvn package
+```
+This will build a runnable jar in `target/hospital-1.0-SNAPSHOT-jar-with-dependencies.jar`.
+
+### 📦 Create Windows Executable
+To create a minimal runnable Java executable for Windows using JLink, follow these steps:
+
+1. Make sure you have JDK 11 or later installed
+2. Update the JAVA_HOME path in the `create-jlink-image.bat` script if needed
+3. Run the batch script:
+```
+create-jlink-image.bat
+```
+4. This will create a minimal Java runtime with the game in `target/jlink-image`
+5. Run the game using the launcher script:
+```
+target\jlink-image\bin\hospital.bat
+```
+
+The JLink image contains only the necessary Java modules required to run the game, resulting in a smaller distribution size compared to bundling the entire JRE.
