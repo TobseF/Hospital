@@ -35,10 +35,17 @@
  It was a monochrome single game handheld gaming device. I never owned an original, but the game
  was included in the Nintendo Game Box Game _Game & Watch Gallery_ from 1997
 
- ### 💻 System Requirements
- To start, the game needs an installed [Java JRE](https://www.java.com/en/download).
- The game was developed in Java 1.4 and should even run with 1.1.
- To launch it in an IDE run `hospital.Game.main`
+### ⬇️ Downloads
+
+📦[Hospital-1.1-EN-Installer-WIN.zip](https://github.com/TobseF/Hospital/releases/download/v1.1/Hospital-1.1-EN-Installer-WIN.zip) `31.2 MB`
+> All in one Windows Installer. No need to install Java on your own.
+
+📦[Hospital-v1.1-EN-Portable-WIN.zip](https://github.com/TobseF/Hospital/releases/download/v1.1/Hospital-v1.1-EN-Portable-WIN.zip) `26.5 MB`
+> Same as installer, but without setup. Just extract the zip archive on Windows and run the game
+
+📦[Hospital-v1.1-EN-JVM.zip](https://github.com/TobseF/Hospital/releases/download/v1.1/Hospital-v1.1-EN-JVM.zip) `0.1 MB`
+> Platform independent JAR file. ℹ Requires an installed [Java JRE](https://java.com/en/download/).
+
 
 ### 🔨 Build
 To build the project, run the Maven task:
