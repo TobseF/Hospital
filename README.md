@@ -1,4 +1,4 @@
- # 🚑 Hospital - The Game
+ # <img src=".idea/icon.png" width="36"/> Hospital - The Game
 
  [![Screenshot](https://github.com/TobseF/hospital/blob/screenshots/screenshot.gif)](https://hospital.xswing.net/)
 
@@ -43,6 +43,3 @@
 ### 🔨 Build
 To build the project, run the Maven task:
 ```
-mvn package
-```
-This will build a runnable jar in `target/hospital-1.0-SNAPSHOT.jar`.
