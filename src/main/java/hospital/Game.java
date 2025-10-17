@@ -53,7 +53,7 @@ public class Game extends Frame implements Runnable, KeyListener {
                     if (pause == false) {
                         draw_shape(x - 7, ycanvas - 3, 16, 31, 0, 0, 0, 3);//Person is deleted
                         draw_shape(102, 360, 575, 30, 0, 0, 0, 0);//delete pixel errors above the people
-                        double ydouble = (((a0) + ((a1) * x)) + ((a2) * Math.pow(x, 2)) + ((a3) * Math.pow(x, 3)) + ((a4) * Math.pow(x, 4))); //Polynomial function of 4th degree, Demo at: http://www.vs-c.de/vsengine/vlu/vsc/de/ma/1/mc/ma_04/ma_04_02/ma_04_02_01.vlu/Page/vsc/de/ma/1/mc/ma_04/ma_04_02/ma_04_02_09.vscml.html
+                        double ydouble = (((a0) + ((a1) * x)) + ((a2) * Math.pow(x, 2)) + ((a3) * Math.pow(x, 3)) + ((a4) * Math.pow(x, 4))); //Polynomial function of 4th degree
                         print("x " + x);
                         print("y " + y);
                         y = (int) ydouble;
