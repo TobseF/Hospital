@@ -10,9 +10,12 @@
 
     <properties>
         <exec.mainClass>hospital.Game</exec.mainClass>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <javafx.version>21.0.5</javafx.version>
+        <mainClass>hospital.Game</mainClass>
+        <moduleName>hospital</moduleName>
     </properties>
 
     <build>
@@ -72,7 +75,83 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>${moduleName}/${mainClass}</mainClass>
+                    <jlinkImageName>${moduleName}</jlinkImageName>
+                    <launcher>${moduleName}</launcher>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>jlink</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>jlink-exec</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>${java.home}/bin/jlink.exe</executable>
+                                    <workingDirectory>${project.build.directory}</workingDirectory>
+                                    <arguments>
+                                        <argument>--module-path</argument>
+                                        <argument>
+                                            ${project.build.directory}\hospital-1.0-SNAPSHOT-jar-with-dependencies.jar;${java.home}\jmods
+                                        </argument>
+                                        <argument>--add-modules</argument>
+                                        <argument>${moduleName}</argument>
+                                        <argument>--launcher</argument>
+                                        <argument>hospital=${moduleName}/${mainClass}</argument>
+                                        <argument>--output</argument>
+                                        <argument>${project.build.directory}\jlink-image</argument>
+                                        <argument>--compress=2</argument>
+                                        <argument>--strip-debug</argument>
+                                        <argument>--no-header-files</argument>
+                                        <argument>--no-man-pages</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

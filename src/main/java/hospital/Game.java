@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 Startpunkt der Anwendung. Initialisiert JavaFX, die Zeichenfläche (Canvas)
 und den GameController, der den Spielablauf steuert.
 */
-public class HospitalRescueApp extends Application {
+public class Game extends Application {
 /**
 
 Breite der Spiel-Fläche in Pixeln.
