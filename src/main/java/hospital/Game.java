@@ -9,12 +9,14 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class Game extends Frame implements Runnable, KeyListener {
-    static Thread t;
+/**
+ * Legacy UI frame for the Hospital game.
+ * Modernized to delegate game loop and input to dedicated classes.
+ */
+public class Game extends Frame {
 
     Game() {
         initCanvas();
-        t = new Thread(this);
         initComponents();
     }
 
@@ -33,15 +35,23 @@ public class Game extends Frame implements Runnable, KeyListener {
     }
 
     public static void main(String[] args) {
-        Game Fun = new Game();
-        Fun.setLocation(150, 150);
-        Fun.setResizable(false);
-        Fun.setSize(625, 446);
-        Fun.setVisible(true);
-        Fun.setTitle("Hospital 2");
-        Sheet.requestFocus(); // Focus Canvas when starting
-        draw_help();
-        t.start();
+        Game app = new Game();
+        app.setLocation(150, 150);
+        app.setResizable(false);
+        app.setSize(Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT);
+        app.setVisible(true);
+        app.setTitle(Config.TITLE);
+
+        // Wire up modern components
+        Renderer renderer = new Renderer(app);
+        GameState state = new GameState();
+        HospitalGameEngine engine = new HospitalGameEngine(state, renderer);
+        InputHandler input = new InputHandler(engine);
+        Sheet.addKeyListener(input);
+        Sheet.requestFocus();
+
+        renderer.drawHelp();
+        engine.start();
     }
 
     public void run() { // Game flow that calls all methods
@@ -197,7 +207,7 @@ public class Game extends Frame implements Runnable, KeyListener {
         Sheet = new Canvas();
         Sheet.setBounds(0, 0, 600, 400);
         Sheet.setBackground(Color.black);
-        Sheet.addKeyListener(this);
+        // Key listener is wired in main via InputHandler
         Sheet.requestFocus(); // should mark my start the Canvas
         Sheet.getFocusListeners();
         Sheet.isEnabled();
