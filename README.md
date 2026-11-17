@@ -35,6 +35,17 @@
  It was a monochrome single game handheld gaming device. I never owned an original, but the game
  was included in the Nintendo Game Box Game _Game & Watch Gallery_ from 1997
 
+### 📱 Browser & Mobile Version
+The folder [`web`](web) contains a JavaScript port of the game which runs in every modern browser.
+Just open `web/index.html` (or host the folder, e.g. with GitHub Pages).
+On touch devices on screen buttons appear for all keys and the arrow keys.
+Add `?touch=1` or `?touch=0` to the URL to force showing or hiding them.
+
+The port replicates the original AWT rendering pixel by pixel: Like the Java version it paints directly
+into a persistent framebuffer without double buffering, with its own rasterizer for `drawLine`, `drawOval`,
+`fillOval`, `clipRect` & co. and aliased text. So also the smoke trails, the blood stains and all the small
+drawing glitches of the original are preserved.
+
 ### ⬇️ Downloads
 
 📦[Hospital-1.1-EN-Installer-WIN.zip](https://github.com/TobseF/Hospital/releases/download/v1.1/Hospital-1.1-EN-Installer-WIN.zip) `31.2 MB`

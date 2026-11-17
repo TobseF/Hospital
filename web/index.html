@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="Help! The hospital is burning. Try to save lives and catch jumping patients.">
+    <title>Hospital 2</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+    <div class="screen">
+        <canvas id="sheet" width="620" height="412" aria-label="Hospital - The Game"></canvas>
+    </div>
+
+    <div class="keys" aria-label="Game keys">
+        <button type="button" data-key="S"><b>S</b><span>Start</span></button>
+        <button type="button" data-key="P"><b>P</b><span>Pause</span></button>
+        <button type="button" data-key="N"><b>N</b><span>New</span></button>
+        <button type="button" data-key="H"><b>H</b><span>Help</span></button>
+        <button type="button" data-key="ESC"><b>Esc</b><span>Quit</span></button>
+        <button type="button" data-key="Y"><b>Y</b><span>Yes</span></button>
+        <button type="button" data-key="1"><b>1</b><span>Mesh</span></button>
+        <button type="button" data-key="2"><b>2</b><span>Mesh</span></button>
+        <button type="button" data-key="3"><b>3</b><span>Mesh</span></button>
+        <button type="button" id="fullscreen" aria-label="Fullscreen"><b>&#x26F6;</b><span>Full</span></button>
+    </div>
+
+    <button type="button" class="arrow left" data-key="LEFT" data-repeat aria-label="Left">&#x25C0;</button>
+    <button type="button" class="arrow right" data-key="RIGHT" data-repeat aria-label="Right">&#x25B6;</button>
+</main>
+<script src="game.js"></script>
+</body>
+</html>
