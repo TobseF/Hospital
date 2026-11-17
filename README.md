@@ -37,7 +37,9 @@
 
 ### 📱 Browser & Mobile Version
 The folder [`web`](web) contains a JavaScript port of the game which runs in every modern browser.
-Just open `web/index.html` (or host the folder, e.g. with GitHub Pages).
+Just open `web/index.html` or play the hosted version on [GitHub Pages](https://tobsef.github.io/Hospital/).
+The workflow [`pages.yml`](.github/workflows/pages.yml) publishes the folder automatically
+(enable it once under *Settings → Pages → Source: GitHub Actions*).
 On touch devices on screen buttons appear for all keys and the arrow keys.
 Add `?touch=1` or `?touch=0` to the URL to force showing or hiding them.
 
