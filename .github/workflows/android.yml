@@ -1,11 +1,11 @@
-name: Android APK
+name: Android Release
 
 on:
   push:
-    branches: [ "ccr-81a040f3-did8b5" ]
+    branches: [ "android-port" ]
     tags: [ "android-v*" ]
   pull_request:
-    branches: [ "ccr-81a040f3-did8b5" ]
+    branches: [ "android-port" ]
   workflow_dispatch:
 
 permissions:
@@ -14,6 +14,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      VERSION_CODE: ${{ github.run_number }}
+      VERSION_NAME: ${{ startsWith(github.ref, 'refs/tags/android-v') && github.ref_name || format('2.0.{0}', github.run_number) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,20 +30,40 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build APK
+      - name: Decode release keystore
+        env:
+          RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$RELEASE_KEYSTORE_BASE64" ]; then
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              echo "::warning::No release key available, the APK is signed with the debug key."
+              exit 0
+            fi
+            echo "::error::Secret RELEASE_KEYSTORE_BASE64 is missing. See README, section 'Android release'."
+            exit 1
+          fi
+          echo "$RELEASE_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.keystore"
+          echo "RELEASE_KEYSTORE=$RUNNER_TEMP/release.keystore" >> "$GITHUB_ENV"
+
+      - name: Build release APK
+        env:
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
         run: ./gradlew --no-daemon assembleRelease
 
       - name: Rename APK
-        run: cp app/build/outputs/apk/release/app-release.apk Hospital.apk
+        run: cp app/build/outputs/apk/release/app-release.apk "Hospital-$VERSION_NAME.apk"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Hospital-apk
-          path: Hospital.apk
+          name: Hospital-${{ env.VERSION_NAME }}
+          path: Hospital-*.apk
 
-      - name: Publish release
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Publish GitHub release
+        if: startsWith(github.ref, 'refs/tags/android-v')
         uses: softprops/action-gh-release@v2
         with:
-          files: Hospital.apk
+          name: Hospital Android ${{ github.ref_name }}
+          files: Hospital-*.apk

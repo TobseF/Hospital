@@ -70,3 +70,21 @@ target\jlink-image\bin\hospital.bat
 ```
 
 The JLink image contains only the necessary Java modules required to run the game, resulting in a smaller distribution size compared to bundling the entire JRE.
+
+### 📱 Android
+The `android-port` branch contains a Kotlin port as native Android app (landscape, four on-screen buttons).
+Build it locally with `./gradlew assembleRelease`; without a release key the APK is signed with the
+checked-in debug key.
+
+#### Android release
+The GitHub Actions workflow `.github/workflows/android.yml` builds a signed release APK on every push
+to `android-port`. Pushing a tag like `android-v2.0.0` additionally publishes a GitHub release with the APK.
+
+It needs these repository secrets (*Settings → Secrets and variables → Actions*):
+
+| Secret                      | Content                                              |
+|-----------------------------|------------------------------------------------------|
+| `RELEASE_KEYSTORE_BASE64`   | The keystore file, base64 encoded                    |
+| `RELEASE_KEYSTORE_PASSWORD` | Password of the keystore                             |
+| `RELEASE_KEY_ALIAS`         | Alias of the key in the keystore, e.g. `hospital`    |
+| `RELEASE_KEY_PASSWORD`      | Password of the key (optional, defaults to keystore password) |
