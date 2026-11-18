@@ -1,0 +1,9 @@
+.gradle/
+local.properties
+/app/build/
+/build/*
+!/build/hospital.ico
+/target/
+*.iml
+.idea/*
+!.idea/icon.png
