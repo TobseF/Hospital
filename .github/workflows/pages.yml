@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - master
-      - ccr-b5feb2ae-igd9s4
+      - js-port
     paths:
       - 'web/**'
       - '.github/workflows/pages.yml'
